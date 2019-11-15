@@ -17,6 +17,20 @@ wn.bgcolor("black")
 wn.title("Space Invaders")
 wn.setup(width=1200, height=800)
 wn.bgpic("spacebg.png")
+#os.system("afplay space_invaders.wav&")
+#stop(os.system("afplay space_invaders.wav&"))
+
+FONTSIZE = 12
+FONT = ('Outer Space', FONTSIZE, 'normal')
+turtle.penup()
+turtle.setx(-520)
+turtle.sety(280)
+
+with open("spaceinvaders_score.txt") as file:
+    for line in file:
+        turtle.write(line.strip(), font=FONT)
+        turtle.goto(turtle.xcor(), turtle.ycor() - FONTSIZE)
+        turtle.color("green")
 
 from Game_Borders import ladder_border_pen, ladder_pen, game_border_pen, space_name_pen, invader_name_pen, si2d_name_pen, score, game_score_pen, credits_border_pen, credits_pen, score
 #SCORE BORDER
@@ -30,7 +44,7 @@ from Game_Borders import ladder_border_pen, ladder_pen, game_border_pen, space_n
 from Player_Resources import player
 
 
-from Enemy_Resources import number_of_enemies, enemy_images, enemies, enemy, enemyspeed
+from Enemy_Resources import number_of_enemies, enemy_images, enemies, enemy, enemyspeed, number_of_enemies2, enemy2_images, image2, enemies2, enemy2
 
 #ENEMIES
 #CHOOSE A NUMBER OF ENEMIES
@@ -71,6 +85,8 @@ turtle.onkey(move_up, "Up")
 turtle.onkey(move_down, "Down")
 turtle.onkey(fire_bullet, "space")
 
+
+
 #MAIN GAME LOOP
 while True:
 
@@ -79,13 +95,14 @@ while True:
 		os.system("afplay Laugh.wav&")
 		player.hideturtle()
 		break
-		print ("GAME OVER. YOU LOSE ! LOSER AHAH !")
+	# if isCollision(player, enemy):
+	# 	os.system("afplay space_invaders.wav&")
 	
 	#MOVE BULLET
 	if bulletstate == "fire":
 		y = bullet.ycor()
 		y += bulletspeed
-		bullet.sety(y)
+		bullet.sety(y) 
 
 	
 	#CHECK IF BULLET HAS GONE TO TOP
@@ -98,7 +115,7 @@ while True:
 		x = enemy.xcor()
 		x += enemyspeed
 		enemy.setx(x)
-
+	
 		#MOVE ENEMY BACK AND DOWN
 		if enemy.xcor() > 280:
 			#MOVE ALL ENEMIES DOWN
@@ -106,7 +123,6 @@ while True:
 				y = e.ycor()
 				y -= 40
 				e.sety(y)
-			#CHANGE ENEMY DIRECTION
 			enemyspeed *= -1
 		
 		if enemy.xcor() < -280:
@@ -116,7 +132,8 @@ while True:
 				y -= 40
 				e.sety(y)
 				#CHANGE ENEMY DIRECTION
-			enemyspeed *= -1	
+			enemyspeed *= -1
+
 
 		#CHECK COLLISION BULLET-ENEMY
 		if isCollision(bullet, enemy):
@@ -128,30 +145,79 @@ while True:
 			bullet.setposition(0, -400)
 
 			#RESET ENEMY
-
 			x = randint(-200, 200)
 			y = randint(100, 250)
 			enemy.setposition(x,y)
 
-
 			#UPDATE SCORE
 			score += 100
 			scorestring = "Score %s" %score
+			scorestring2 = "%s" %score
+			game_score_pen.clear()
+			game_score_pen.write(scorestring, False, align="left", font=("Arial", 17, "normal"))
+
+		#UPDATE SCOREBOARD AT DEATH
+		if isCollision(player, enemy):
+			text = wn.textinput("Ladder", "Enter your Initials: ")
+			with open("spaceinvaders_score.txt","a") as f:
+				f.write(text + " -- %s\r\n\n" % scorestring2)
+				print()
+			break
+
+	#MOVE THE ENEMY2
+	for enemy2 in enemies2:
+		x = enemy2.xcor()
+		x += enemyspeed
+		enemy2.setx(x)
+
+		#MOVE ENEMY2 BACK AND DOWN
+		if enemy2.xcor() > 280:
+			#MOVE ALL ENEMIES DOWN
+			for e in enemies2:
+				y = e.ycor()
+				y -= 40
+				e.sety(y)
+			#CHANGE ENEMY2 DIRECTION
+			enemyspeed *= -1
+
+		if enemy2.xcor() < -280:
+			#MOVE ENEMIES2 DOWN
+			for e in enemies2:
+				y = e.ycor()
+				y -= 40
+				e.sety(y)
+				#CHANGE ENEMY2 DIRECTION
+			enemyspeed *= -1
+
+		#CHECK COLLISION BULLET-ENEMY2
+		if isCollision(bullet, enemy2):
+			os.system("afplay explosion.wav&")
+			
+			#RESET BULLET
+			bullet.hideturtle()
+			bulletstate = "ready"
+			bullet.setposition(0, -400)
+
+			#RESET ENEMY2
+			x = randint(-200, 200)
+			y = randint(100, 250)
+			enemy2.setposition(x,y)
+
+		
+			#UPDATE SCORE
+			score += 100
+			scorestring = "Score %s" %score
+			scorestring2 = "%s" %score
 			game_score_pen.clear()
 			game_score_pen.write(scorestring, False, align="left", font=("Arial", 17, "normal"))
 		
 		#UPDATE SCOREBOARD AT DEATH
-		if isCollision(player, enemy):
-			f= open("spaceinvaders_score.txt","a")
-			f.write("Last %s\r\n" % scorestring)
+		if isCollision(player, enemy2):
+			text = wn.textinput("Ladder", "Enter your Initials: ")
+			with open("spaceinvaders_score.txt","a") as f:
+				f.write(text + " -- %s\r\n\n" % scorestring2)
+				print()
 			break
-			f.close()
-
-
-
-
-		
-					
 
 
 

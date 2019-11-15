@@ -12,12 +12,12 @@ from Player_Resources import player
 
 #REGISTER SHAPES
 
-turtle.register_shape("laser.gif")
+turtle.register_shape("sharingan.gif")
 
 #CREATE THE BULLET
 bullet = turtle.Turtle()
 bullet.color("yellow")
-bullet.shape("laser.gif")
+bullet.shape("sharingan.gif")
 bullet.penup()
 bullet.speed(0)
 bullet.setheading(90)
@@ -26,5 +26,3 @@ bullet.hideturtle()
 
 bulletspeed = 20
 bulletstate = "ready" #Define bullet state -- ready = ready to fire -- fire = bullet is firing
-
-

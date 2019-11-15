@@ -1,3 +1,6 @@
+#Thanks to Christian Thompson for the tutorial
+
+
 import turtle
 import os
 import math

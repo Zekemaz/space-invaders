@@ -1,3 +1,5 @@
+#Thanks to Christian Thompson for the tutorial
+
 #ENEMY RESOURCES
 import turtle
 import os

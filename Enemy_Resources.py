@@ -44,7 +44,7 @@ enemyspeed = 2
 #CHOOSE A NUMBER OF ENEMY2
 number_of_enemies2 = 4
 
-enemy2_images = ["4.gif"]
+enemy2_images = ["2_1.gif", "2_2.gif", "2_3.gif", "2_4.gif"]
 
 for image2 in enemy2_images:
     turtle.register_shape(image2)

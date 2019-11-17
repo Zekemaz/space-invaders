@@ -12,7 +12,6 @@ from tkinter import *
 from turtle import Screen, Turtle
 from random import choice, randint
 
-#f= open("spaceinvaders_score.txt","a")
 #SCORE BORDER
 ladder_border_pen = turtle.Turtle()
 ladder_border_pen.speed(0)
@@ -38,14 +37,6 @@ scoreboard = "LADDER"
 ladder_pen.write(scoreboard, False, align="Left", font=("Outer Space", 26 , "normal"))
 ladder_pen.hideturtle()
 
-"""ladder_score_pen = turtle.Turtle()
-ladder_score_pen.speed(0)
-ladder_score_pen.color("purple")
-ladder_score_pen.penup()
-ladder_score_pen.setposition(333, 303)
-contents = f.t()
-ladder_score_pen.write(contents, False, align="Left", font=("Outer Space", 26 , "normal"))
-ladder_score_pen.hideturtle()"""
 
 #GAME BORDER
 game_border_pen = turtle.Turtle()

@@ -10,7 +10,6 @@ import Player_Resources
 import Game_Borders
 import Bullet_Resources
 import Enemy_Resources
-from tkinter import *
 from turtle import Screen, Turtle
 from random import choice, randint
 

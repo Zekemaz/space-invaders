@@ -141,7 +141,7 @@ credits2_filling_pen.speed(0)
 credits2_filling_pen.color("red")
 credits2_filling_pen.penup()
 credits2_filling_pen.setposition(333, 20)
-credits2 = " Gabriel Dessere\r\r\r\r\r\r\r\r\r\r\r Thomas C.\r\r\r\r\r Sebastien X.C.\r\r\r\r\r Sebastien X.C."
+credits2 = " Gabriel D S\r\r\r\r\r\r\r\r\r\r\r Thomas C.\r\r\r\r\r Sebastien X.C.\r\r\r\r\r Sebastien X.C."
 credits2_filling_pen.write(credits2, False, align="Left", font=("Outer Space", 8 , "normal"))
 credits2_filling_pen.hideturtle()
 
@@ -150,7 +150,7 @@ credits3_filling_pen.speed(0)
 credits3_filling_pen.color("red")
 credits3_filling_pen.penup()
 credits3_filling_pen.setposition(333, -125)
-credits3 = " Mathieu Ducournau\r Clement Lecram\r Sebastien X.C\r Thomas Corno\r Glenn Oberle\r Maxime RIL\r Israel Kabran"
+credits3 = " Mathieu D.\r Clement M.\r Sebastien X.C\r Thomas C.\r Glenn O.\r Maxime RIL\r Israel K."
 credits3_filling_pen.write(credits3, False, align="Left", font=("Outer Space", 8 , "normal"))
 credits3_filling_pen.hideturtle()
 
